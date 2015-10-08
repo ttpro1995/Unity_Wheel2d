@@ -4,16 +4,31 @@ using System.Collections;
 public class CreateItem : MonoBehaviour {
 
     public GameObject itemObj;
+    public GameObject wall;
     private Transform parentTrans;
     private Quaternion identityQuat;
     private Vector3 parentPos;
+
 
 	// Use this for initialization
 	void Start () {
         parentTrans = transform;
         identityQuat = Quaternion.identity;
         parentPos = parentTrans.position;
-        createItemOnCircle(8);
+        
+     string[] sampleName =
+    {
+        "con mèo đen",
+        "con mèo trắng",
+        "con mèo tam thế",
+        "con mèo vàng",
+        "con mèo tím",
+        "con mèo đỏ",
+        "con mèo xanh",
+        "con mèo vàng",
+    };
+        createItemOnCircle(itemObj,0,1.0f,8,sampleName);
+        createItemOnCircle(wall, -15, 2.0f, 8,null);
     }
 	
 	// Update is called once per frame
@@ -77,13 +92,13 @@ public class CreateItem : MonoBehaviour {
         return pos; 
     }
 
-    void createItemOnCircle(int num)
+    void createItemOnCircle(GameObject itemObj ,int offset_angle,float radius ,int num, string[] names)
     {
         Vector3 position;
         GameObject newItem;
-        int angle = 0;
+        int angle = 0+offset_angle;
         int inc = 360 / num;
-        float radius = 3.5f;
+       
         Vector3 center = transform.position;//parent position
 
 
@@ -92,7 +107,10 @@ public class CreateItem : MonoBehaviour {
         {
             position = onCircle(center,radius,angle);
             newItem = (GameObject)Instantiate(itemObj, position, Quaternion.AngleAxis(-angle, new Vector3(0, 0, 1)));
-            newItem.name = "mèo đen "+angle;
+            if (names != null)
+            {
+                newItem.name = names[i];
+            }
             newItem.transform.parent = transform;//attach it to parent
             angle = angle + inc;
         }
