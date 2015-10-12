@@ -70,8 +70,11 @@
   <ItemGroup>
     <Compile Include="Assets\script\CreateItem.cs" />
     <Compile Include="Assets\script\DragWithVelocity.cs" />
+    <Compile Include="Assets\script\GameData.cs" />
+    <Compile Include="Assets\script\MenuController.cs" />
     <Compile Include="Assets\script\TextController.cs" />
     <Compile Include="Assets\script\stickscript.cs" />
+    <Compile Include="Assets\sprite\GameController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

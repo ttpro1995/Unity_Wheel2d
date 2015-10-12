@@ -15,8 +15,13 @@ public class CreateItem : MonoBehaviour {
         parentTrans = transform;
         identityQuat = Quaternion.identity;
         parentPos = parentTrans.position;
-        
-     string[] sampleName =
+        initCircle(GameData.NumOfChoose);
+    }
+
+    //call to init circle with number of part
+    public void initCircle(int num)
+    {
+        string[] sampleName =
     {
         "con mèo đen",
         "con mèo trắng",
@@ -27,8 +32,8 @@ public class CreateItem : MonoBehaviour {
         "con mèo xanh",
         "con mèo vàng",
     };
-        createItemOnCircle(itemObj,0,1.0f,8,sampleName);
-        createItemOnCircle(wall, -15, 2.0f, 8,null);
+        createItemOnCircle(itemObj, false, 1.0f, num, sampleName);
+        createItemOnCircle(wall, true, 2.0f, num, null);
     }
 	
 	// Update is called once per frame
@@ -92,12 +97,18 @@ public class CreateItem : MonoBehaviour {
         return pos; 
     }
 
-    void createItemOnCircle(GameObject itemObj ,int offset_angle,float radius ,int num, string[] names)
+    void createItemOnCircle(GameObject itemObj ,bool isWall,float radius ,int num, string[] names)
     {
+        int inc = 360 / num;
+        int offset_angle = 0 ;
+        if (isWall)
+        {
+            offset_angle = -inc / 2;
+        }
         Vector3 position;
         GameObject newItem;
         int angle = 0+offset_angle;
-        int inc = 360 / num;
+       
        
         Vector3 center = transform.position;//parent position
 
