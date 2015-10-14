@@ -15,24 +15,15 @@ public class CreateItem : MonoBehaviour {
         parentTrans = transform;
         identityQuat = Quaternion.identity;
         parentPos = parentTrans.position;
-        initCircle(GameData.NumOfChoose);
+        initCircle();
     }
 
     //call to init circle with number of part
-    public void initCircle(int num)
+    public void initCircle()
     {
-        string[] sampleName =
-    {
-        "con mèo đen",
-        "con mèo trắng",
-        "con mèo tam thế",
-        "con mèo vàng",
-        "con mèo tím",
-        "con mèo đỏ",
-        "con mèo xanh",
-        "con mèo vàng",
-    };
-        createItemOnCircle(itemObj, false, 1.0f, num, sampleName);
+        int num = GameData.NumOfChoose;
+        
+        createItemOnCircle(itemObj, false, 1.0f, num, GameData.wheelcontent);
         createItemOnCircle(wall, true, 2.0f, num, null);
     }
 	
