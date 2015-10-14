@@ -57,7 +57,7 @@ public class MenuController : MonoBehaviour {
         if (GameData.NumOfChoose < 8)
         {
             print("num of chose " + GameData.NumOfChoose);
-            inputfield_list[GameData.NumOfChoose] = Instantiate(inputfieldObj);
+            inputfield_list[GameData.NumOfChoose] = (InputField) Instantiate(inputfieldObj);
             Transform t = inputfield_list[GameData.NumOfChoose].GetComponent<Transform>();
             t.SetParent(listParent.GetComponent<RectTransform>());  
             GameData.NumOfChoose++;
