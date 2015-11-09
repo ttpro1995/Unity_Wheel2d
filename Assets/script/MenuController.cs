@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+using UnityEngine.EventSystems;
 public class MenuController : MonoBehaviour {
 
     public InputField firstinputfield;
@@ -13,9 +13,12 @@ public class MenuController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GameData.NumOfChoose = 1;
+        //GameData.NumOfChoose = 1;
+        // inputfield_list[0] = firstinputfield;
+
+        GameData.NumOfChoose = 0;
         inputfield_list = new InputField[8];
-        inputfield_list[0] = firstinputfield;
+      
         GameData.wheelcontent = new string[8]{
             "1",
             "2",
@@ -59,7 +62,8 @@ public class MenuController : MonoBehaviour {
             print("num of chose " + GameData.NumOfChoose);
             inputfield_list[GameData.NumOfChoose] = (InputField) Instantiate(inputfieldObj);
             Transform t = inputfield_list[GameData.NumOfChoose].GetComponent<Transform>();
-            t.SetParent(listParent.GetComponent<RectTransform>());  
+            t.SetParent(listParent.GetComponent<RectTransform>());
+            inputfield_list[GameData.NumOfChoose].Select();
             GameData.NumOfChoose++;
         }
     }
